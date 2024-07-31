@@ -48,10 +48,14 @@ WebGLRenderingContext::WebGLRenderingContext(
     , prev(NULL)
     , lastError(GL_NO_ERROR) {
 
+  printf("webgl: constructor\n");
+
   //Get display
   if (!HAS_DISPLAY) {
     DISPLAY = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     if (DISPLAY == EGL_NO_DISPLAY) {
+      // Print message to std out
+      printf("webgl: EGL_NO_DISPLAY\n");
       state = GLCONTEXT_STATE_ERROR;
       return;
     }
